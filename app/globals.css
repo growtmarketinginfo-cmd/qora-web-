@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   QORA Design System — Global Styles
+   Terrain + Signal + Intelligence + Precision
+   ============================================================ */
+
+/* Google Fonts — preloaded in layout.tsx */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   Base / Reset
+   ============================================================ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-qora-bg text-qora-text font-body;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(200, 242, 65, 0.25);
+    color: #C8F241;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-qora-primary rounded-sm;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar       { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0A0B0E; }
+  ::-webkit-scrollbar-thumb { background: #1E2228; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #374151; }
+}
+
+/* ============================================================
+   QORA Component Classes
+   ============================================================ */
+@layer components {
+
+  /* --- Typography --- */
+  .qora-headline {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  .qora-label {
+    @apply font-mono text-xs tracking-widest uppercase text-qora-primary;
+  }
+
+  /* --- Buttons --- */
+  .btn-primary {
+    @apply inline-flex items-center gap-2
+           bg-qora-primary text-qora-bg
+           font-display font-bold text-sm
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-qora-primary-dim
+           active:scale-[0.98]
+           focus-visible:outline-2 focus-visible:outline-qora-primary;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2
+           border border-qora-border text-qora-text
+           font-display font-semibold text-sm
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:border-qora-muted hover:bg-qora-surface
+           active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2
+           text-qora-muted font-semibold text-sm
+           px-4 py-2 rounded-lg
+           transition-all duration-200
+           hover:text-qora-text hover:bg-qora-surface;
+  }
+
+  /* --- Cards --- */
+  .card {
+    @apply bg-qora-surface border border-qora-border rounded-xl p-6;
+  }
+
+  .card-glow {
+    @apply card;
+    box-shadow: 0 0 0 1px rgba(200, 242, 65, 0.08),
+                0 4px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  /* --- Terrain Grid Background --- */
+  .terrain-bg {
+    background-image:
+      linear-gradient(rgba(200, 242, 65, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200, 242, 65, 0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* --- Section spacing --- */
+  .section {
+    @apply py-20 md:py-28 lg:py-36 px-4;
+  }
+
+  .section-sm {
+    @apply py-12 md:py-16 px-4;
+  }
+
+  /* --- Container --- */
+  .container-qora {
+    @apply max-w-6xl mx-auto;
+  }
+
+  /* --- Gradient text --- */
+  .text-gradient {
+    @apply bg-gradient-to-r from-qora-primary to-qora-accent bg-clip-text text-transparent;
+  }
+
+  /* --- Data tag / metric --- */
+  .data-tag {
+    @apply inline-flex items-center gap-1.5
+           bg-qora-surface border border-qora-border
+           text-qora-muted font-mono text-xs
+           px-3 py-1 rounded-full;
+  }
+
+  /* --- Signal dot animation --- */
+  .signal-dot {
+    @apply w-2 h-2 rounded-full bg-qora-primary;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* --- WhatsApp button specific --- */
+  .btn-whatsapp {
+    @apply btn-primary;
+    background-color: #25D366;
+    color: #fff;
+  }
+
+  .btn-whatsapp:hover {
+    background-color: #128C7E;
+  }
+
+  /* --- Typing indicator dots --- */
+  .typing-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-qora-muted;
+    animation: typingDot 1.4s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+}
+
+/* ============================================================
+   Utility Overrides
+   ============================================================ */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar                    { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .text-balance { text-wrap: balance; }
+}
